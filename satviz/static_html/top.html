@@ -1,33 +1,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!--
   <script src="https://cesiumjs.org/releases/1.57/Build/Cesium/Cesium.js"></script>
   <link href="https://cesiumjs.org/releases/1.57/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.67/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.67/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
 <body>
   <div id="cesiumContainer" style="width: 100%; height:100%"></div>
   <script>
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjYjMyYjIzOS1jZmFkLTQxNGEtYWRjZC03ZTIyM2ZmODQwY2IiLCJpZCI6Mjc2NTg3LCJpYXQiOjE3Mzk3NzYyMjl9.Dpp_5P6bu3ZxVTl0qGcG4rC3N9ghdzhhDzNET90ZkMA';
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OTE5MTc2Zi04MmI5LTRjNDMtYWIzNi04NTE1NWVkMzYzZTkiLCJpZCI6Mjc2NTg3LCJpYXQiOjE3Mzk3NzYxNTh9.vPMCdcslTiui3fGsP7ECF0Z_0WS3KHgZoVMlreZ23U4';
     var viewer = new Cesium.Viewer('cesiumContainer', {
-    skyBox : false,
-    skyAtmosphere: false,
-    baseLayerPicker: false,
-    geocoder: false,
-    homeButton: false,
-    infoBox: false,
-    sceneModePicker: false,
-    navigationHelpButton: false,
-    shouldAnimate : true,
-    contextOptions : {
-        webgl: {
-            alpha: true
+        skyBox : false,
+        skyAtmosphere: false,
+        baseLayerPicker: false,
+        geocoder: false,
+        homeButton: true,
+        infoBox: true,
+        sceneModePicker: false,
+        navigationHelpButton: false,
+        shouldAnimate : true,
+        contextOptions : {
+            webgl: {
+                alpha: true
+            }
         }
-    }
-});
+    });
 
 var scene = viewer.scene;
-scene.backgroundColor = Cesium.Color.WHITE;
-scene.highDynamicRange = false;
+//scene.backgroundColor = Cesium.Color.WHITE;
+//scene.highDynamicRange = false;
 var canvas = viewer.canvas;
 canvas.setAttribute('tabindex', '0'); // needed to put focus on the canvas
 canvas.onclick = function() {
@@ -35,14 +39,15 @@ canvas.onclick = function() {
 };
 var ellipsoid = scene.globe.ellipsoid;
 var globe = viewer.scene.globe;
-globe.imageryLayers.removeAll();
-globe.baseColor = Cesium.Color.fromCssColorString('#f7fbff');
-
+//globe.imageryLayers.removeAll();
+//globe.baseColor = Cesium.Color.fromCssColorString('#f7fbff');
+//<!--'https://stamen-tiles.a.ssl.fastly.net/toner-background/',-->
 var tonerLayer = globe.imageryLayers.addImageryProvider(
     Cesium.createOpenStreetMapImageryProvider({
-        url : 'https://stamen-tiles.a.ssl.fastly.net/toner-background/',
-        credit : 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.'
-    })
+        url : 'http://a.tile.openstreetmap.org/'
+        //credit : 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.'
+    }
+	)
 );
 tonerLayer.alpha = 0.3;
 tonerLayer.brightness = 3;

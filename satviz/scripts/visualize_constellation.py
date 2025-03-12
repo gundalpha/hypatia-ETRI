@@ -50,7 +50,7 @@ COLOR = ['CRIMSON', 'FORESTGREEN', 'DODGERBLUE', 'PERU', 'BLUEVIOLET', 'DARKMAGE
 # STARLINK
 NAME = "Starlink"
 
-SHELL_CNTR = 5
+SHELL_CNTR = 1
 
 MEAN_MOTION_REV_PER_DAY = [None]*SHELL_CNTR
 ALTITUDE_M = [None]*SHELL_CNTR
@@ -67,7 +67,7 @@ NUM_SATS_PER_ORB[0] = 22
 INCLINATION_DEGREE[0] = 53
 BASE_ID[0] = 0
 ORB_WISE_IDS[0] = []
-
+'''
 MEAN_MOTION_REV_PER_DAY[1] = 13.4  # Altitude ~1110 km
 ALTITUDE_M[1] = 1110000  # Altitude ~1110 km
 NUM_ORBS[1] = 32
@@ -99,7 +99,7 @@ NUM_SATS_PER_ORB[4] = 75
 INCLINATION_DEGREE[4] = 70
 BASE_ID[4] = 3959
 ORB_WISE_IDS[4] = []
-
+'''
 
 """
 # TELESAT
@@ -248,5 +248,5 @@ def write_viz_files():
     writer_html.close()
 
 
-viz_string = generate_satelite_trajectories()
+viz_string = generate_satellite_trajectories()
 write_viz_files()
